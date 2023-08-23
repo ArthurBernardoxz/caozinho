@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cãozinho hoje?</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  #container {
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: white;
+    color: blue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #nao {
+    position: relative;
+  }
+
+  .pop-out {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    color: blue;
+    border-radius: 10px;
+    z-index: 1000;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <h2>C*zinho hoje?</h2>
+  <button class="btn" id="sim">Sim</button>
+  <button class="btn" id="nao">Não</button>
+</div>
+<script>
+  const naoButton = document.getElementById("nao");
+  const simButton = document.getElementById("sim");
+  const container = document.getElementById("container");
+
+  naoButton.addEventListener("mouseover", () => {
+    const randomX = Math.random() * (window.innerWidth - 100);
+    const randomY = Math.random() * (window.innerHeight - 50);
+    naoButton.style.left = randomX + "px";
+    naoButton.style.top = randomY + "px";
+  });
+
+  simButton.addEventListener("click", () => {
+    const popOut = document.createElement("div");
+    popOut.classList.add("pop-out");
+    popOut.textContent = "Obrigado amor, cuidarei muito bem dele!!! hihihi";
+    container.appendChild(popOut);
+
+    setTimeout(() => {
+      popOut.remove();
+    }, 3000);
+  });
+</script>
+</body>
+</html>
